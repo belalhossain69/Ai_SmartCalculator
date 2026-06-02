@@ -1,0 +1,115 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.example.smartcalculator'
+    compileSdk 36
+
+
+
+
+    defaultConfig {
+        applicationId "com.example.smartcalculator"
+        minSdk 26
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+
+
+
+    }
+
+
+    packaging {
+        jniLibs {
+            // Necessary for AI libraries to load correctly from the APK
+            useLegacyPackaging = true
+        }
+        resources {
+            // Consolidated excludes
+            excludes += [
+                    "META-INF/DEPENDENCIES",
+                    "META-INF/LICENSE*",
+                    "META-INF/NOTICE*",
+                    "**/pom.xml",
+                    "**/pom.properties",
+                    "**/viz.xsd" // Symja specific fixes
+            ]
+            pickFirsts += [
+                    "**/gexf.xsd",
+                    "**/xlink.xsd",
+                    "**/graphml.xsd",
+                    "log4j2.component.properties" // <--- ADD THIS LINE
+            ]
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // MODERN SYNC: Enables latest Android Studio features
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+
+
+
+
+}
+
+
+
+dependencies {
+    // Standard UI & Firebase
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation libs.firebase.firestore
+
+    // 🧮 Math Engines
+    implementation 'net.objecthunter:exp4j:0.4.8'
+
+    // Symja - Adding exclusions to prevent crashes and build errors
+    implementation('org.matheclipse:matheclipse-core:3.0.0') {
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-core'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-api'
+    }
+
+    // 👁️ OCR (Text Recognition)
+    // Switch to this for better offline reliability if your APK size allows (+~7MB)
+    implementation 'com.google.mlkit:text-recognition:16.0.0'
+
+    // 🖼️ Image Loading
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    implementation 'org.apache.logging.log4j:log4j-to-slf4j:2.20.0'
+    implementation 'org.slf4j:slf4j-android:1.7.36'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    // Testing
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+}

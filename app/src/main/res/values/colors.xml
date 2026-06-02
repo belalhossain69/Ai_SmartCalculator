@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+        <color name="calc_background">#1C1C1C</color> <color name="tab_selected_bg">#313131</color> <color name="btn_functional_grey">#616161</color> <color name="btn_numeric_dark">#262626</color> <color name="btn_orange">#FF8F00</color> <color name="text_white">#FFFFFF</color>
+        <color name="text_grey">#9E9E9E</color>
+
+
+        <!-- Add these missing ones -->
+        <color name="button_indigo">#3F51B5</color> <!-- Indigo color for your circle button -->
+        <color name="btn_grey">#444444</color>
+</resources>

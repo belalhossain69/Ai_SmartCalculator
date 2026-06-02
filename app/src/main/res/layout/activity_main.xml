@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212"
+    android:id="@+id/main"
+    android:fitsSystemWindows="true">
+
+    <!-- Top Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="#121212"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/tabCalculator"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/calculator"
+                app:tint="#FF8C00"
+                android:layout_marginRight="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calculator"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                />
+
+        </LinearLayout>
+
+        <!-- CHANGE PART: wrap AI Calculator for click detection -->
+        <LinearLayout
+            android:id="@+id/tabAiCalculator"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                app:tint="#FF8C00"
+                android:src="@drawable/ic_ai_calculator"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="AI Calculator"
+                android:textSize="17sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="10dp"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.7dp"
+        android:background="@drawable/line_gradient" />
+
+    <!-- Display Area -->
+    <LinearLayout
+        android:id="@+id/calculatorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="#121212"
+        android:paddingHorizontal="30dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:textSize="80sp"
+            android:gravity="end|bottom"
+            android:paddingBottom="20dp" />
+
+        <!-- Icon Strip -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@android:drawable/ic_input_delete"
+                app:tint="#94A3B8" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- NEW PART: AI Calculator container (hidden by default) -->
+    <LinearLayout
+        android:id="@+id/aiContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <include layout="@layout/layout_ai_chat"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/line_gradient" />
+    <GridLayout
+        android:id="@+id/calculatorGrid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8"
+        android:background="#121212"
+        android:columnCount="4"
+        android:padding="8dp">
+
+        <Button style="@style/GrayButton" android:text="C" android:onClick="onCalcButtonClick"
+            android:textColor="#000000" app:backgroundTint="#F44336"/>
+        <Button style="@style/GrayButton" android:text="( )" android:onClick="onCalcButtonClick"
+            android:textColor="#000000" app:backgroundTint="#FF8C00" />
+        <Button style="@style/GrayButton" android:text="%" android:onClick="onCalcButtonClick"
+            android:textColor="#000000" app:backgroundTint="#FF8C00" />
+        <Button style="@style/GrayButton" android:text="÷" android:onClick="onCalcButtonClick"
+            app:backgroundTint="#FF8C00" android:textColor="#000000"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_columnSpan="4"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/line_gradient" />
+
+        <Button style="@style/BlackButton" android:text="7" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/BlackButton" android:text="8" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/BlackButton" android:text="9" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/GrayButton" android:text="×" android:onClick="onCalcButtonClick"
+            android:textStyle="bold" app:backgroundTint="#FF8C00" android:textColor="#FFFFFF"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_columnSpan="4"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/line_gradient" />
+
+        <Button style="@style/BlackButton" android:text="4" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/BlackButton" android:text="5" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/BlackButton" android:text="6" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/GrayButton" android:text="-" android:onClick="onCalcButtonClick"
+            android:textStyle="bold" android:textSize="33sp" app:backgroundTint="#FF8C00" android:textColor="#FFFFFF"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_columnSpan="4"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/line_gradient" />
+
+        <Button style="@style/BlackButton" android:text="1" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/BlackButton" android:text="2" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/BlackButton" android:text="3" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/GrayButton" android:text="+" android:onClick="onCalcButtonClick"
+            android:textStyle="bold" app:backgroundTint="#FF8C00" android:textColor="#FFFFFF"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_columnSpan="4"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/line_gradient" />
+
+        <Button style="@style/BlackButton" android:text="+/-" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/BlackButton" android:text="0" android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/BlackButton" android:text="." android:onClick="onCalcButtonClick"
+            />
+        <Button style="@style/OrangeButton" android:text="=" android:onClick="onCalcButtonClick"
+            android:textStyle="bold" android:textColor="#FFFFFF"/>
+
+    </GridLayout>
+</LinearLayout>
