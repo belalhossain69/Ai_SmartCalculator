@@ -22,7 +22,7 @@ This app combines a traditional calculator with **AI solving capabilities and OC
 
 ---
 
-![Screenshot2](ADD_YOUR_SECOND_SCREENSHOT_LINK_HERE)
+![Screenshot2](https://github.com/belalhossain69/Ai_SmartCalculator/blob/master/3315.png?raw=true)
 
 ---
 
