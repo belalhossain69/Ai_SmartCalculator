@@ -1,5 +1,7 @@
 package com.example.smartcalculator;
 
+
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -40,6 +42,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -219,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                 okhttp3.OkHttpClient client = new okhttp3.OkHttpClient();
 
                 // 🔑 PUT YOUR API KEY HERE
-                String apiKey = "AIzaSyBo_QYRmniYa4L53vO1YfGVM97FFe1UWB0";
+                String apiKey = "ADD_YOUR_OWN_API_KEY_HERE";
 
                 // 🛠 Fix empty input
                 String finalInput = input;
